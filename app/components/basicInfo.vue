@@ -7,16 +7,23 @@ const state = reactive({
 })
 
 const validate = (state: any): FormError[] => {
-  const errors: FormError[] = []
-  if (!state.email) errors.push({ name: 'fName', message: 'Required' })
+  let errors: FormError[] = []
+  if(state.fName) {
+    errors = removeValidation(errors, {name: 'fName'})
+  } else {
+    errors.push({ name: 'fName', message: 'Required' })
+  }
   return errors
 }
+const removeValidation = (errors: FormError[], el:{name:string}): FormError[] => {
+  const indexToRemove = errors.findIndex(error => error.name === el.name); // Find index of object to remove
+  if (indexToRemove !== -1) {
+    errors.splice(indexToRemove, 1);
+  }
+  return errors
+}
+const onSubmit = (event: FormSubmitEvent<typeof state>) => {
 
-const toast = useToast()
-async function onSubmit(event: FormSubmitEvent<typeof state>) {
-  toast.add({ title: 'Save Info.', description: 'The form has been submitted.', color: 'success' })
-  debugger
-  validate(state)
 }
 </script>
 
