@@ -2,7 +2,7 @@
 import type { StepperItem } from '@nuxt/ui'
 import BasicInfo from '~/components/basicInfo.vue';
 import AddressInfo from '~/components/addressInfo.vue';
-
+import displayInfo from '~/components/displayInfo.vue';
 const items: StepperItem[] = [
   {
     title: 'Basic Information',
@@ -11,6 +11,10 @@ const items: StepperItem[] = [
   {
     title: 'Address Information',
     slot: 'addressInfo' as const
+  }, 
+  {
+    title: 'Display Information',
+    slot: 'displayInfo' as const
   }
 ]
 
@@ -25,6 +29,10 @@ const stepper = useTemplateRef('stepper')
 
         <template #addressInfo>
           <AddressInfo />
+        </template>
+        
+        <template #displayInfo>
+          <displayInfo />
         </template>
       </UStepper>
 
