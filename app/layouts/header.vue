@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    header
+    <UHeader title="Nuxt Form" />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    footer
+    <UFooter />
   </div>
 </template>
 
